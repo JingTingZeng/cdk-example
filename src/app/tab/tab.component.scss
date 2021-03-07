@@ -1,0 +1,18 @@
+
+.tabs{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  height: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ddd;
+}

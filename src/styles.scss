@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+button{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 46px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 0;
+  background-color: #2F5597;
+  color: #fff;
+
+  &.active{
+    background-color: #F4A259;
+  }
+
+  &:not(:last-child){
+    margin-right: 20px;
+  }
+}

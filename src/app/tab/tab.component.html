@@ -1,0 +1,24 @@
+<div class="tabs">
+  <button (click)="changePortal1()">功能1</button>
+  <button (click)="changePortal2()">功能2</button>
+  <button (click)="changePortal3()">功能3</button>
+  <button (click)="changePortal4()">功能4</button>
+</div>
+<div class="tab-content">
+  <div>
+    <ng-container [cdkPortalOutlet]="currentPortal"></ng-container>
+  </div>
+</div>
+
+<ng-template cdkPortal let-test="data">
+  <p>功能1：我放在ng-template + cdkPortal = TemplatePortal裡面</p>
+  <p>資訊：{{test}}</p>
+</ng-template>
+
+<p *cdkPortal>
+  功能2：我放在一般的HTML Element內，加上cdkPortal後變成了一個TemplatePortal
+</p>
+
+<ng-template #demoTemplate>
+  <p>功能3：我放在ng-template內，但不是TemplatePortal，要用我要記得先包裝一下</p>
+</ng-template>
