@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  padding: 0;
+  margin: 0;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  
+  &:not(:last-child){
+    margin-bottom: 50px;
+  }
+}
+
 button{
   cursor: pointer;
   display: flex;
