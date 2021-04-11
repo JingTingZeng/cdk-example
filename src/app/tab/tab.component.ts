@@ -1,8 +1,6 @@
-import { CdkPortal, ComponentPortal, DomPortal, Portal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
-import { Component, InjectionToken, Injector, OnInit, QueryList, TemplateRef, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import { CdkPortal, ComponentPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
+import { Component, OnInit, QueryList, TemplateRef, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { ComponentPortalDemoComponent } from '../component-portal-demo/component-portal-demo.component';
-
-export const EXAMPLE_DATA= new InjectionToken<any>('example-data');
 
 @Component({
   selector: 'app-tab',
@@ -17,8 +15,6 @@ export class TabComponent implements OnInit {
   
   currentPortal: Portal<any>;
 
-  name = '外部資訊內容';
-
   constructor(private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit(): void {
@@ -26,7 +22,6 @@ export class TabComponent implements OnInit {
 
   changePortal1(){
     this.currentPortal = this.templatePortalList.first;
-    this.templatePortalList.first.context = {data: this.name}
   }
 
   changePortal2(){
@@ -34,20 +29,10 @@ export class TabComponent implements OnInit {
   }
 
   changePortal3(){
-    this.currentPortal = new TemplatePortal(this.demoTemplate, this.viewContainerRef, {data: this.name});
+    this.currentPortal = new TemplatePortal(this.demoTemplate, this.viewContainerRef);
   }
 
   changePortal4(){
-    const newInjector = this.createInjector(this.name);
-    this.currentPortal = new ComponentPortal(ComponentPortalDemoComponent, undefined, newInjector);
+    this.currentPortal = new ComponentPortal(ComponentPortalDemoComponent);
   }
-
-  private createInjector(data): Injector{
-    return Injector.create({
-      providers:[
-        {provide: EXAMPLE_DATA, useValue: data}
-      ]
-    })
-  }
-
 }

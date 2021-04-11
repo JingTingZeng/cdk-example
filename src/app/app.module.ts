@@ -7,14 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TabComponent } from './tab/tab.component';
 import { ComponentPortalDemoComponent } from './component-portal-demo/component-portal-demo.component';
-import { DomPortalDemoComponent } from './dom-portal-demo/dom-portal-demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TabComponent,
-    ComponentPortalDemoComponent,
-    DomPortalDemoComponent
+    ComponentPortalDemoComponent
   ],
   imports: [
     BrowserModule,
