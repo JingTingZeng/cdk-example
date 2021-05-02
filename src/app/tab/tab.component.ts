@@ -11,7 +11,7 @@ export class TabComponent implements OnInit {
 
   @ViewChildren(CdkPortal) templatePortalList: QueryList<CdkPortal>;
 
-  @ViewChild('demoTemplate') demoTemplate: TemplateRef<any>;
+  @ViewChild('exampleTemplate') exampleTemplate: TemplateRef<any>;
   
   currentPortal: Portal<any>;
 
@@ -29,7 +29,7 @@ export class TabComponent implements OnInit {
   }
 
   changePortal3(){
-    this.currentPortal = new TemplatePortal(this.demoTemplate, this.viewContainerRef);
+    this.currentPortal = new TemplatePortal(this.exampleTemplate, this.viewContainerRef);
   }
 
   changePortal4(){
