@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PortalModule } from '@angular/cdk/portal';
 import { OverlayModule } from '@angular/cdk/overlay';
+// import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +28,8 @@ import { ColorPickerComponent } from './color-picker/color-picker.component';
     BrowserModule,
     AppRoutingModule,
     PortalModule,
-    OverlayModule
+    OverlayModule,
+    // ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

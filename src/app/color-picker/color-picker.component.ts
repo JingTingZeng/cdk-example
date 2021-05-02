@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Overlay, OverlayRef, PositionStrategy, ScrollDispatcher } from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
+import { AfterViewInit, Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-color-picker',
@@ -6,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./color-picker.component.scss']
 })
 export class ColorPickerComponent implements OnInit {
+  @ViewChild('triggerBtn', {static: true}) toggleBtn: ElementRef;
+  @ViewChild('colorPicker') colorPicker: TemplateRef<any>;
 
-  isOpen = false;
   selectedColor = '';
 
   colorList = [
@@ -20,10 +23,74 @@ export class ColorPickerComponent implements OnInit {
     { hex: '#FFEB3B', name: 'yellow'},
     { hex: '#FF9800', name: 'orange'},
     { hex: '#795548', name: 'brown'},
-  ]
-  constructor() { }
+  ];
+
+  overlayRef: OverlayRef;
+
+  constructor(
+    private elementRef: ElementRef,
+    private overlay: Overlay, 
+    private viewContainerRef: ViewContainerRef,
+  ) { }
 
   ngOnInit(): void {
+
+    const positionStrategy = this.overlay
+      // 2. position
+      .position()
+      // FlexibleConnectedPositionStrategy
+      .flexibleConnectedTo(this.toggleBtn)
+      .withPositions([
+        {
+          originX: 'start',
+          originY: 'bottom',
+          overlayX: 'start',
+          overlayY: 'top'
+        }
+      ])
+      .withDefaultOffsetY(10)
+      .withLockedPosition(true)
+      // .withPush(true)
+      // .withScrollableContainers()
+
+      // GlobalPositionStrategy
+      // .global()
+      // .top()
+      // .right()
+      // .left()
+      // .bottom()
+      // .centerHorizontally()
+      // .centerVertically()
+      ;
+
+      // 3. position
+      const scrollStrategy = this.overlay.scrollStrategies.reposition();
+      
+      // 1. create overlayRef
+      this.overlayRef = this.overlay.create({
+        // hasBackdrop: true,
+        // backdropClass: 'customBackdrop',
+        positionStrategy: positionStrategy,
+        scrollStrategy: scrollStrategy
+    }); 
+
+
+
+    this.overlayRef.backdropClick().subscribe(()=>this.toggleColorPicker())
+
   }
 
+  
+  toggleColorPicker(){
+    if(this.overlayRef && this.overlayRef.hasAttached()){
+      this.overlayRef.detach();
+    }else{
+      this.overlayRef.attach(new TemplatePortal(this.colorPicker, this.viewContainerRef));
+    }
+  }
+
+  pickColor(item){
+    this.selectedColor = item.hex;
+    this.toggleColorPicker();
+  }
 }

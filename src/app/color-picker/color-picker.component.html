@@ -1,11 +1,10 @@
-<button (click)="isOpen = !isOpen" [style.background-color]="selectedColor || 'none'" cdkOverlayOrigin
-  #trigger="cdkOverlayOrigin">Change Color</button>
+<button #triggerBtn (click)="toggleColorPicker()" [style.background-color]="selectedColor || 'none'">Change
+  Color</button>
 
-
-<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
+<ng-template #colorPicker>
   <div class="color-picker">
     <div *ngFor="let color of colorList" class="color-picker__item" [style.background-color]="color.hex"
-      (click)="selectedColor = color.hex; isOpen=false">
+      (click)="pickColor(color)">
     </div>
   </div>
 </ng-template>

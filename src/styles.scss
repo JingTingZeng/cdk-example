@@ -4,6 +4,8 @@
 body{
   padding: 0;
   margin: 0;
+
+  // overflow: hidden;
 }
 
 .content{
@@ -35,4 +37,13 @@ button{
   &:not(:last-child){
     margin-right: 20px;
   }
+}
+
+.customPanel{
+  background-color: blue;
+  padding: 20px
+}
+
+.customBackdrop{
+  background-color: rgba(red, 0.3);
 }
