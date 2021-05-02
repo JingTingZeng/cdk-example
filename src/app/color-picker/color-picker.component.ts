@@ -36,7 +36,7 @@ export class ColorPickerComponent implements OnInit {
   ngOnInit(): void {
 
     const positionStrategy = this.overlay
-      // 2. position
+      // 2. position strategy
       .position()
       // FlexibleConnectedPositionStrategy
       .flexibleConnectedTo(this.toggleBtn)
@@ -63,7 +63,7 @@ export class ColorPickerComponent implements OnInit {
       // .centerVertically()
       ;
 
-      // 3. position
+      // 3. scroll strategy
       const scrollStrategy = this.overlay.scrollStrategies.reposition();
       
       // 1. create overlayRef
