@@ -15,7 +15,6 @@ export class DomPortalDemoComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: any,
-    private viewContainerRef: ViewContainerRef,
     private injector: Injector,
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef
