@@ -1,5 +1,5 @@
 import { Overlay, OverlayRef, PositionStrategy, ScrollDispatcher } from '@angular/cdk/overlay';
-import { TemplatePortal } from '@angular/cdk/portal';
+import { CdkPortal, TemplatePortal } from '@angular/cdk/portal';
 import { AfterViewInit, Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, TemplateRef, ViewChild, V
 })
 export class ColorPickerComponent implements OnInit {
   @ViewChild('triggerBtn', {static: true}) toggleBtn: ElementRef;
-  @ViewChild('colorPicker') colorPicker: TemplateRef<any>;
+  @ViewChild(CdkPortal) colorPicker: CdkPortal;
 
   selectedColor = '';
 
@@ -29,8 +29,7 @@ export class ColorPickerComponent implements OnInit {
 
   constructor(
     private elementRef: ElementRef,
-    private overlay: Overlay, 
-    private viewContainerRef: ViewContainerRef,
+    private overlay: Overlay,
   ) { }
 
   ngOnInit(): void {
@@ -68,10 +67,10 @@ export class ColorPickerComponent implements OnInit {
       
       // 1. create overlayRef
       this.overlayRef = this.overlay.create({
-        // hasBackdrop: true,
-        // backdropClass: 'customBackdrop',
-        positionStrategy: positionStrategy,
-        scrollStrategy: scrollStrategy
+        hasBackdrop: true,
+        backdropClass: 'customBackdrop',
+        // positionStrategy: positionStrategy,
+        // scrollStrategy: scrollStrategy
     }); 
 
 
@@ -85,7 +84,7 @@ export class ColorPickerComponent implements OnInit {
     if(this.overlayRef && this.overlayRef.hasAttached()){
       this.overlayRef.detach();
     }else{
-      this.overlayRef.attach(new TemplatePortal(this.colorPicker, this.viewContainerRef));
+      this.overlayRef.attach(this.colorPicker);
     }
   }
 

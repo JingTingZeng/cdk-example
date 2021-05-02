@@ -1,7 +1,7 @@
 <button #triggerBtn (click)="toggleColorPicker()" [style.background-color]="selectedColor || 'none'">Change
   Color</button>
 
-<ng-template #colorPicker>
+<ng-template cdkPortal>
   <div class="color-picker">
     <div *ngFor="let color of colorList" class="color-picker__item" [style.background-color]="color.hex"
       (click)="pickColor(color)">
