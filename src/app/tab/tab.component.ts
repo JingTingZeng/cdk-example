@@ -2,7 +2,7 @@ import { CdkPortal, ComponentPortal, DomPortal, Portal, PortalInjector, Template
 import { Component, InjectionToken, Injector, OnInit, QueryList, TemplateRef, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { ComponentPortalDemoComponent } from '../component-portal-demo/component-portal-demo.component';
 
-export const EXAMPLE_DATA= new InjectionToken<any>('example-data');
+export const EXAMPLE_DATA= new InjectionToken<string>('example-data');
 
 @Component({
   selector: 'app-tab',
