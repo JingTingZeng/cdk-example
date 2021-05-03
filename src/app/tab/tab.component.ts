@@ -31,7 +31,6 @@ export class TabComponent implements OnInit {
 
   changePortal2(){
     this.currentPortal = this.templatePortalList.last;
-    this.templatePortalList.last.context = {data: this.name};
   }
 
   changePortal3(){
