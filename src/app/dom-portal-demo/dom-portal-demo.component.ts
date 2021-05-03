@@ -11,7 +11,7 @@ export class DomPortalDemoComponent implements OnInit {
 
   @ViewChild(CdkPortal) demo: CdkPortal;
 
-  domPortalOutLet: DomPortalOutlet;
+  domPortalOutlet: DomPortalOutlet;
 
   constructor(
     @Inject(DOCUMENT) private document: any,
@@ -32,11 +32,11 @@ export class DomPortalDemoComponent implements OnInit {
     const element = this.document.createElement('div');
     element.innerHTML = "<p>我在app-root之外</p>";
     this.document.body.appendChild(element);
-    this.domPortalOutLet = new DomPortalOutlet(element, this.componentFactoryResolver,this.appRef,this.injector);
+    this.domPortalOutlet = new DomPortalOutlet(element, this.componentFactoryResolver,this.appRef,this.injector);
   }
 
   attachTemplate(){
-    this.domPortalOutLet.attach(this.demo);
+    this.domPortalOutlet.attach(this.demo);
   }
 
 }
