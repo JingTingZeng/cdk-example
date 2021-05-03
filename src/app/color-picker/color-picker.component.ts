@@ -37,20 +37,6 @@ export class ColorPickerComponent implements OnInit {
     const positionStrategy = this.overlay
       // 2. position strategy
       .position()
-      // FlexibleConnectedPositionStrategy
-      .flexibleConnectedTo(this.toggleBtn)
-      .withPositions([
-        {
-          originX: 'start',
-          originY: 'bottom',
-          overlayX: 'start',
-          overlayY: 'top'
-        }
-      ])
-      .withDefaultOffsetY(10)
-      .withLockedPosition(true)
-      // .withPush(true)
-      // .withScrollableContainers()
 
       // GlobalPositionStrategy
       // .global()
@@ -60,6 +46,21 @@ export class ColorPickerComponent implements OnInit {
       // .bottom()
       // .centerHorizontally()
       // .centerVertically()
+
+      // FlexibleConnectedPositionStrategy
+      // .flexibleConnectedTo(this.toggleBtn)
+      // .withPositions([
+      //   {
+      //     originX: 'start',
+      //     originY: 'bottom',
+      //     overlayX: 'start',
+      //     overlayY: 'top'
+      //   }
+      // ])
+      // .withDefaultOffsetY(10)
+      // .withLockedPosition(true)
+      // .withPush(true)
+      // .withScrollableContainers()
       ;
 
       // 3. scroll strategy
