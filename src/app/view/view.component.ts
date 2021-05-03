@@ -17,8 +17,10 @@ export class ViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // embeddedView
     const embeddedView = this.tpl.createEmbeddedView(null);
 
+    // hostView
     const factory = this.componentFactoryResolver.resolveComponentFactory(ColorComponent);
     const colorComponentRef = factory.create(this.injector);
     const hostView = colorComponentRef.hostView;
